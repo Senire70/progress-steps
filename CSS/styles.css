@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+
+}
+
+body {
+    display: grid;
+    height: 100vh;
+    width: 100%;
+}
+
+main {
+    width: 25%;
+    height: 20vh;
+    /* background-color: red; */
+    place-self: center;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .step {
+        width: 30px;
+        aspect-ratio: 1/1;
+        border-radius: 50px;
+        background-color: white;
+        display: grid;
+        place-content: center;
+        border: 3px solid rgba(128, 128, 128, 0.2);
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    .step-1 {
+        border-color: #3498db;
+    }
+
+    .step.selected {
+        animation: selected 500ms linear;
+        border-color: #3498db;
+        /* transition: 500ms; */
+    }
+
+    .line {
+        width: 70px;
+        height: 4px;
+        background-color: rgba(128, 128, 128, 0.2);
+        /* transform: translateX(-45px); */
+        transition: 500ms;
+    }
+
+    .line.selected::before {
+        content: "";
+        background-color: #3498db;
+        /* width: 67px; */
+        height: 4px;
+        z-index: 10;
+        display: block;
+        animation: line-animate 500ms linear;
+    }
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+    
+    button {
+        color: white;
+        background-color: #3498db;
+        width: 100px;
+        aspect-ratio: 3/1;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 100ms;
+
+    }
+    
+
+    button.disabled {
+        background-color: rgba(128, 128, 128, 0.308);
+        cursor: not-allowed;
+    }
+
+    button:active {
+        border-right: 2px solid white;
+        border-left: 2px solid white;
+        padding-top: 2px;
+        transition: 100ms;
+    }
+}
+
+@keyframes line-animate {
+
+    0% {
+        width: 1px;
+    }
+
+    100% {
+        width: 70px;
+    }
+
+}
+
+@keyframes selected {
+    0% {
+        border-color: rgba(128, 128, 128, 0.2);
+    }
+
+    100% {
+        border-color: #3498db;
+    }
+}
